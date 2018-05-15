@@ -71,13 +71,14 @@ To optimize my work and to make sure I will deliver the finishied synopsis befor
 
 The first week is a project initialization phase, in which I will describe what I am going to do in the next weeks, how and why.
 
-In the second and third week I will focus on learning, finding information and describing the results of it. I am also going to focus on the practical part of this project, which is learning how to use different attack techniques and creating examples for the presentation of them.
+In the second and third week I will focus on learning, finding information and describing the results of it. I am also going to work on the practical part of this project, which is learning how to use different attack techniques and creating examples for the presentation of them.
 
-In the last week I will look back at my work, write summary of it, as well as reflections on the research process. I will also proof read my synopsis and correct all mistakes.
+In the last week I will look back at my work, write summary of it, as well as reflections on the research process. I will also proof read my synopsis and correct any mistakes that I find.
 
 \newpage
 
 \section{Work}
+
 \subsection{What is application security?}
 
 Application security describes activities that need to be taken into consideration by a developer who creates an application which will be available to a broader group of users. Having a large userbase means that there is a risk that, among the regular users, there might be some individuals with malicious intents.
@@ -85,6 +86,12 @@ Application security describes activities that need to be taken into considerati
 These people, usually called attackers, could try to access sensitive data stored in the database connected to the application or use functions that normally are only available for the users with special privileges. Such data could include for example a list of users, some important documents or money in a bank account. Administrator actions, like adding/removing users or changing application's settings could be an example of functionality wanted by the attackers.
 
 In order to achieve their goals, the attackers try to find vulnerablities, unintended flaws or weaknesses in the application, and exploit them. Although the application security improved over the years, some of the most common vulnerabilities remain unchanged and include: broken authentication, broken access controls, SQL injection, cross-site scripting (XSS), information leakage and cross-site request forgery (CSRF).
+
+When talking about application security, it usually means web application security. The reason for this is the fact that web apps are nowadays the most common form of application. Every day billions of people are searching for information using Google, browsing Facebook and watching videos on YouTube. All of these are web applications. What makes them different from regular websites is that they do not just display static content, but allow users to interact with them. Users can for example sign up, log in, write comments, upload videos. A lot of sensitive data is flowing between the user and the system. This, and being publicly available, makes them frequent targets of the attackers.
+
+Other common targets are mobile and desktop applications, with the emphasis on the first one. Just like web apps they are usually part of a bigger system and process private data. Moreover, their security is often neglected by the developers in favor of having more features. That could make them security holes, easy gateways leading to the precious resources. 
+
+\subsection{Why application security is important?}
 
 \section{Conclusion}
 
@@ -106,6 +113,11 @@ In order to achieve their goals, the attackers try to find vulnerablities, unint
 		Michael Coates.
 		\textit{Application Security - Understanding, Exploiting and Defending against Top Web Vulnerabilities}.
 		\texttt{https://youtu.be/sY7pUJU8a7U}
+
+	\bibitem{mobappsec}
+		Sarah Vonnegut.
+		\textit{Mobile Application Security: 15 Best Practices for App Developers}
+		\texttt{https://checkmarx.com/2015/08/19/mobile-application}
 \end{thebibliography}
 
 \end{document}
