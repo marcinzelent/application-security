@@ -17,25 +17,40 @@
 
 \section{Introduction}
 
-One of the mandatory activities in Computer Science course at Erhvervsakademi Sjælland is an individual specialization project. In this project, student has to choose a subject, which was not presented during the lectures, research it and describe it in the synopsis.
+One of the mandatory activities in Computer Science course at Erhvervsakademi
+Sjælland is an individual specialization project. In this project, student has
+to choose a subject, which was not presented during the lectures, research it
+and describe it in the synopsis.
 
-I have chosen application security as the topic that I want to learn more about. Application security is an umbrella term for all of the measures that need to taken in order to make a secure application. That means finding, fixing and preventing security vulnerabilities.
+I have chosen application security as the topic that I want to learn more about.
+Application security is an umbrella term for all of the measures that need to
+taken in order to make a secure application. That means finding, fixing and
+preventing security vulnerabilities.
 
-I decided to work on this subject, because in previous semesters we have learned how to make programs, services and web applications, but we did not learn how to make them safe from exploitation. It is important, since a potential attacker could use it to gain access to the system without authorization, retrieve some sensitive data, abuse or even break the system. This could lead to some serious consequences.
+I decided to work on this subject, because in previous semesters we have learned
+how to make programs, services and web applications, but we did not learn how to
+make them safe from exploitation. It is important, since a potential attacker
+could use it to gain access to the system without authorization, retrieve some
+sensitive data, abuse or even break the system. This could lead to some serious
+consequences.
 
 \section{Problem definition}
 
-During my research I am going to delve deeper into the subject of application security, its meaning, principles, importance in the modern software development, as well as practical implementation.
+During my research I am going to delve deeper into the subject of application
+security, its meaning, principles, importance in the modern software
+development, as well as practical implementation.
 The main question which I would like to answer is:
 
 \medskip
 {\large How to make a secure application?} 
 \medskip
 
-In order to give an answer to it, I will first need to find solutions to the following problems:
+In order to give an answer to it, I will first need to find solutions to the
+following problems:
 \begin{itemize}
 	\item What is application security?
-	\item What are the most common application security flaws and attack techniques?
+	\item What are the most common application security flaws and attack
+		techniques?
 	\item How software developers can prevent them?
 \end{itemize}
 
@@ -45,35 +60,52 @@ In order to give an answer to it, I will first need to find solutions to the fol
 
 The method which I am going to use in my research consists of a few activities:
 \begin{itemize}
-	\item Getting general information about application security using all of the sources available on the internet, this could include reading articles, watching videos, talks, lectures and and online courses
+	\item Getting general information about application security using all
+		of the sources available on the internet, this could include
+		reading articles, watching videos, talks, lectures and and
+		online courses
 	\item Reading books related to the subject of application security
-	\item Finding detailed descriptions and tutorials about specific attack techniques
-	\item Trying to reproduce the attacks by creating vulnerable applications and exploiting them
+	\item Finding detailed descriptions and tutorials about specific attack
+		techniques
+	\item Trying to reproduce the attacks by creating vulnerable
+		applications and exploiting them
 \end{itemize}
 
 \section{Plan}
 
-To optimize my work and to make sure I will deliver the finishied synopsis before the deadline, I have prepared a plan which I will try to follow:
+To optimize my work and to make sure I will deliver the finishied synopsis
+before the deadline, I have prepared a plan which I will try to follow:
 
 \begin{table}[h]
 	\centering
 	\begin{tabular}{@{}lll@{}}
 		\toprule
-		Week 18              & Week 19 \& 20            & Week 21                   \\ \midrule
-		Writing introduction & Doing an actual research & Writing conclusion        \\
-		Defining the problem & Describing the work      & Reflecting on the work    \\
-		Choosing the method  & Preparing examples       & Putting finishing touches \\
-		Planning             &                          &                           \\ \bottomrule
+		Week 18              & Week 19 \& 20            & Week 21
+		\\ \midrule
+		Writing introduction & Doing an actual research & Writing
+		conclusion        \\
+		Defining the problem & Describing the work      & Reflecting on
+		the work    \\
+		Choosing the method  & Preparing examples       & Putting
+		finishing touches \\
+		Planning             &                          &
+		\\ \bottomrule
 	\end{tabular}
 	\caption{Week plan}
 	\label{my-label}
 \end{table}
 
-The first week is a project initialization phase, in which I will describe what I am going to do in the next weeks, how and why.
+The first week is a project initialization phase, in which I will describe what
+I am going to do in the next weeks, how and why.
 
-In the second and third week I will focus on learning, finding information and describing the results of it. I am also going to work on the practical part of this project, which is learning how to use different attack techniques and creating examples for the presentation of them.
+In the second and third week I will focus on learning, finding information and
+describing the results of it. I am also going to work on the practical part of
+this project, which is learning how to use different attack techniques and
+creating examples for the presentation of them.
 
-In the last week I will look back at my work, write summary of it, as well as reflections on the research process. I will also proof read my synopsis and correct any mistakes that I find.
+In the last week I will look back at my work, write summary of it, as well as
+reflections on the research process. I will also proof read my synopsis and
+correct any mistakes that I find.
 
 \newpage
 
@@ -81,21 +113,63 @@ In the last week I will look back at my work, write summary of it, as well as re
 
 \subsection{What is application security?}
 
-Application security describes activities that need to be taken into consideration by a developer who creates an application which will be available to a broader group of users. Having a large userbase means that there is a risk that, among the regular users, there might be some individuals with malicious intents.
+Application security describes activities that need to be taken into
+consideration by a developer who creates an application which will be available
+to a broader group of users. Having a large userbase means that there is a risk
+that, among the regular users, there might be some individuals with malicious
+intents.
 
-These people, usually called attackers, could try to access sensitive data stored in the database connected to the application or use functions that normally are only available for the users with special privileges. Such data could include for example a list of users, some important documents or money in a bank account. Administrator actions, like adding/removing users or changing application's settings could be an example of functionality wanted by the attackers.
+These people, usually called attackers, could try to access sensitive data
+stored in the database connected to the application or use functions that
+normally are only available for the users with special privileges. Such data
+could include for example a list of users, some important documents or money in
+a bank account. Administrator actions, like adding/removing users or changing
+application's settings could be an example of functionality wanted by the
+attackers.
 
-In order to achieve their goals, the attackers try to find vulnerablities, unintended flaws or weaknesses in the application, and exploit them. Although the application security improved over the years, some of the most common vulnerabilities remain unchanged and include: broken authentication, broken access controls, SQL injection, cross-site scripting (XSS), information leakage and cross-site request forgery (CSRF).
+In order to achieve their goals, the attackers try to find vulnerablities,
+unintended flaws or weaknesses in the application, and exploit them. Although
+the application security improved over the years, some of the most common
+vulnerabilities remain unchanged and include: broken authentication, broken
+access controls, SQL injection, cross-site scripting (XSS), information leakage
+and cross-site request forgery (CSRF).
 
-When talking about application security, it usually means web application security. The reason for this is the fact that web apps are nowadays the most common form of application. Every day billions of people are searching for information using Google, browsing Facebook and watching videos on YouTube. All of these are web applications. What makes them different from regular websites is that they do not just display static content, but allow users to interact with them. Users can for example sign up, log in, write comments, upload videos. A lot of sensitive data is flowing between the user and the system. This, and being publicly available, makes them frequent targets of the attackers.
+When talking about application security, it usually means web application
+security. The reason for this is the fact that web apps are nowadays the most
+common form of application. Every day billions of people are searching for
+information using Google, browsing Facebook and watching videos on YouTube. All
+of these are web applications. What makes them different from regular websites
+is that they do not just display static content, but allow users to interact
+with them. Users can for example sign up, log in, write comments, upload videos.
+A lot of sensitive data is flowing between the user and the system. This, and
+being publicly available, makes them frequent targets of the attackers.
 
-Other common targets are mobile and desktop applications, with the emphasis on the first one. Just like web apps they are usually part of a bigger system and process private data. Moreover, their security is often neglected by the developers in favor of having more features. That could make them security holes, easy gateways leading to the precious resources. 
+Other common targets are mobile and desktop applications, with the emphasis on
+the first one. Just like web apps they are usually part of a bigger system and
+process private data. Moreover, their security is often neglected by the
+developers in favor of having more features. That could make them security
+holes, easy gateways leading to the precious resources. 
 
 \subsection{Why application security is important?}
 
-There should be no doubt about the importance of application security. There are many reasons for that.
+There should be no doubt about the importance of application security. There are
+many reasons for that.
 
-First and most important is the risk of unwanted disclosure of sensitive data to the attackers, if the application becomes compromised. This could include names, addresses, login credentials, credit card information, bank account details, private photos and many more information about the users of the system. By breaking into the unprotected system, attackers could also gain access to company's internal data: important documents, list of employees, private keys and passwords. All this information could be useful for them in various ways. For example, it could be used to buy things or perform financial operations without the knowledge of the account owner. The data could be sold on the black market or published on the internet. It could be used to harass or blackmail the unfortunate users. Attackers could also impersonate them and cause even more problems. It could be especially dangerous when pretending to be a corporate worker as their actions could harm the entire business.
+First and most important is the risk of unwanted disclosure of sensitive data to
+the attackers, if the application becomes compromised. This could include names,
+addresses, login credentials, credit card information, bank account details,
+private photos and many more information about the users of the system. By
+breaking into the unprotected system, attackers could also gain access to
+company's internal data: important documents, list of employees, private keys
+and passwords. All this information could be useful for them in various ways.
+For example, it could be used to buy things or perform financial operations
+without the knowledge of the account owner. The data could be sold on the black
+market or published on the internet. It could be used to harass or blackmail the
+unfortunate users. Attackers could also impersonate them and cause even more
+problems. It could be especially dangerous when pretending to be a corporate
+worker as their actions could harm the entire business.
+
+
 
 \section{Conclusion}
 
@@ -105,22 +179,26 @@ First and most important is the risk of unwanted disclosure of sensitive data to
 
 	\bibitem{webapphandbook}
 		Dafydd Stuttard, Marcus Pinto.
-		\textit{The Web Application Hacker's Handbook: Finding and Exploiting Security Flaws, 2nd Edition}.
+		\textit{The Web Application Hacker's Handbook: Finding and
+		Exploiting Security Flaws, 2nd Edition}.
 		John Wiley \& Sons Inc, ISBN: 978-1118026472, 2011.
 
 	\bibitem{owasptop10}
 		Caroline Wong.
 		\textit{Learning the OWASP Top 10}.
-		\texttt{https://lynda.com/IT-\allowbreak{}Infrastructure-tutorials/Learning-OWASP-Top-10/642483-2.html}
+		\texttt{https://lynda.com/IT-\allowbreak{}
+		Infrastructure-tutorials/Learning-OWASP-Top-10/642483-2.html}
 		
 	\bibitem{cernertalk}
 		Michael Coates.
-		\textit{Application Security - Understanding, Exploiting and Defending against Top Web Vulnerabilities}.
+		\textit{Application Security - Understanding, Exploiting and
+		Defending against Top Web Vulnerabilities}.
 		\texttt{https://youtu.be/sY7pUJU8a7U}
 
 	\bibitem{mobappsec}
 		Sarah Vonnegut.
-		\textit{Mobile Application Security: 15 Best Practices for App Developers}
+		\textit{Mobile Application Security: 15 Best Practices for App
+		Developers}
 		\texttt{https://checkmarx.com/2015/08/19/mobile-application}
 \end{thebibliography}
 
