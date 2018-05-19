@@ -150,6 +150,8 @@ process private data. Moreover, their security is often neglected by the
 developers in favor of having more features. That could make them security
 holes, easy gateways leading to the precious resources. 
 
+\newpage
+
 \subsection{Why application security is important?}
 
 There should be no doubt about the importance of application security. There are
@@ -201,6 +203,8 @@ usually it is also connected to the network. Finally, the attacker could use the
 functionality of the compromised IoT devices in a bad way, for example making
 them use a lot of power, causing short circuit or even starting fire.
 
+\newpage
+
 \subsection{Most common application security vulnerabilities}
 
 There are many possible weaknesses but some of them occur more often than the
@@ -218,47 +222,47 @@ critical web application security risks:
 
 \begin{itemize}
 
-	\item \textbf{A1:2017 - Injection}
+	\item \textbf{A1:2017 - Injection} \\
 		Allows the attacker to execute malicious code in the
 		application's back-end by tricking the interpreter with a
 		specially crafted message, e.g. SQL injection.
-	\item \textbf{A2:2017 - Broken Authentication}
+	\item \textbf{A2:2017 - Broken Authentication} \\
 		Includes every weakness which would enable the attacker to get
 		into to the application without authentication, i.e. by 
 		hijacking other user's session, guessing or brute-forcing
 		password, getting keys or bypassing the login completely.
-	\item \textbf{A3:2017 - Sensitive Data Exposure}
+	\item \textbf{A3:2017 - Sensitive Data Exposure} \\
 		Exposing sensitive data because of weak protection, lack of
 		encryption, defective error handling or other behavior.
-	\item \textbf{A4:2017 - XML External Entities (XXE)}
+	\item \textbf{A4:2017 - XML External Entities (XXE)} \\
 		Exploitation of older or poorly configured XML processors, which
 		could disclose specific files on the server by parsing an
 		external entity included in the XML message sent by the
 		attacker.
-	\item \textbf{A5:2017 - Broken Access Control}
+	\item \textbf{A5:2017 - Broken Access Control} \\
 		Allows the attacker to use functionality available only to
 		privileged users without authorization or to access other users'
 		accounts and sensitive data.
-	\item \textbf{A6:2017 - Security Misconfiguration}
+	\item \textbf{A6:2017 - Security Misconfiguration} \\
 		Insecure configuration of some components of the system, for
 		example by using default config files or enabling debugging
 		options, which give detailed error messages with information
 		useful to the attackers. This includes also neglect of patching
 		and updating the components.
-	\item \textbf{A7:2017 - Cross-Site Scripting (XSS)}
+	\item \textbf{A7:2017 - Cross-Site Scripting (XSS)} \\
 		Focuses on attacking users of the application by making their
 		browser execute code which was previously uploaded to the
 		app. Could allow to hijack the victim's session or redirect it
 		to a malicious website. 
-	\item \textbf{A8:2017 - Insecure Deserialization}
+	\item \textbf{A8:2017 - Insecure Deserialization} \\
 		Flaws in deserialization algorithms allowing remote code
 		execution, replay attacks, injection attacks and privilege
 		escalation attacks.
-	\item \textbf{A9:2017 - Using Components with Known Vulnerabilities}
+	\item \textbf{A9:2017 - Using Components with Known Vulnerabilities} \\
 		A weakness in one component could lead to compromisitation of
 		the whole system. Application is just as secure its weakest
 		link.
-	\item \textbf{A10:2017 - Insufficient Logging \& Monitoring}
+	\item \textbf{A10:2017 - Insufficient Logging \& Monitoring} \\
 		Application needs to log what is happening inside it and its
 		status needs to be monitored so, in case of a breach,
 		the administrators could detect it, find a cause of it and fix
