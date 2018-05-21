@@ -2,6 +2,9 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage{booktabs}
+\usepackage{minted}
+
+\setcounter{tocdepth}{2}
 
 \title{Application Security}
 \author{Marcin Zelent}
@@ -10,9 +13,11 @@
 \begin{document}
 
 \maketitle
+
 \newpage
 
 \tableofcontents
+
 \newpage
 
 \section{Introduction}
@@ -47,6 +52,7 @@ The main question which I would like to answer is:
 
 In order to give an answer to it, I will first need to find solutions to the
 following problems:
+
 \begin{itemize}
 	\item What is application security?
 	\item What are the most common application security flaws and attack
@@ -59,6 +65,7 @@ following problems:
 \section{Method}
 
 The method which I am going to use in my research consists of a few activities:
+
 \begin{itemize}
 	\item Getting general information about application security using all
 		of the sources available on the internet, this could include
@@ -221,7 +228,6 @@ The latest release of OWASP Top 10 lists these vulnerabilities as the most
 critical web application security risks:
 
 \begin{itemize}
-
 	\item \textbf{A1:2017 - Injection} \\
 		Allows the attacker to execute malicious code in the
 		application's back-end by tricking the interpreter with a
@@ -267,14 +273,166 @@ critical web application security risks:
 		status needs to be monitored so, in case of a breach,
 		the administrators could detect it, find a cause of it and fix
 		the weakness.
-
 \end{itemize}
+
+Apart from these risks there are also some additional weaknesses that need to be
+taken into consideration when creating an application:
+
+\begin{itemize}
+	\item CWE-352: Cross-Site Request Forgery (CSRF)
+	\item CWE-400: Uncontrolled Resource Consumption ("Resource Exhaustion,
+		"AppDoS")
+	\item CWE-434: Unrestricted Upload of File with Dangerous Type
+	\item CWE-451: User Interface (UI) Misinterpretation of Critical
+		Information (Clickjacking and others)
+	\item CWE-601: Unvalidated Forwards and Redirects
+	\item CWE-799: Improper Control of Interaction Frequency
+		(Anti-Automation)
+	\item CWE-829: Inclusion of Functionality from Untrusted Control Sphere
+		(3rd Party Content)
+	\item CWE-918: Server-Side Request Forgery (SSRF)
+\end{itemize}
+
+Let's take a closer look at some of the listed vulnerabilities now.
+
+\subsection{Injection}
+
+\subsubsection{How it works}
+
+When an application is not protected against this exploitation, it is possible
+to insert a malicious code to the input field, which could be a part of a login
+page or some form. Nothing bad could happen if a user types in it normal,
+expected text, like \texttt{johnsmith@mail.com}. But if an attacker puts there a
+specially crafted message like \texttt{login' OR '1'='1}, he could be able to
+login to the system without a password.
+
+The way it works is simple. In this case, it is a SQL injection attack. When a
+user presses login button, the contents of the input fields are sent to the
+back-end, which is executing a SQL query to find a user with specified user name
+and later to validate the password. This is how the first part of this query
+could look like:
+
+\begin{minted}{sql}
+SELECT * FROM Users WHERE Username = '$USERNAME';
+\end{minted}
+
+The \texttt{\$USERNAME} in this query is replaced with the inserted data. In
+expected scenario:
+
+\begin{minted}{sql}
+SELECT * FROM Users WHERE Username = 'johnsmith@mail.com';
+\end{minted}
+
+The application will look for \texttt{johnsmith@mail.com}. However, in the
+attack scenario the query would look like this:
+
+\begin{minted}{sql}
+SELECT * FROM Users WHERE Username = 'login' OR '1'='1';
+\end{minted}
+
+In this case the original query is changed by the attacker. \texttt{OR '1'='1'}
+added by the attacker is a statement, which is always true. Therefore, the
+database ignores the first condition (\texttt{WHERE Username = 'login'}), which
+is false because there is no user with a user name \texttt{login} and returns
+all users. The application expect only one user to be returned, so it will only
+take the first one and login the attacker as this user.
+
+Apart from SQL injection, there are many more injection attack techniques. Here
+is an example of remote file injection made in PHP:
+
+\begin{minted}{php}
+<?php
+   if ( isset( $_GET['car'] ) ) {
+         include( $_GET['car'] . '.php' );
+    }
+?>
+\end{minted}
+
+The intended behaviour is to load a PHP file, which is on the sever, when
+loading a URL like: \texttt{https://example.com/cars.php?car=lamborghini}. This
+should load lamborghini.php file. However, it could be exploited to load a
+remote file with malicious code just by changing the end of the URL, from
+\texttt{lamborghini} to \texttt{https://attackerswebsite.com/badcode}.
+
+Another injection attack is command injection. In this attack, the attacker can
+execute shell commands by passing them to application, which does not do input
+validation. Here is a C code, which is vulnerable to this technique:
+
+\begin{minted}{c}
+#include <stdlib.h>
+#include <string.h>
+
+int main(int argc, char **argv)
+{
+	char cmd[strlen(argv[1]) + 6];
+	strcpy(cmd, "echo ");
+	strcat(cmd, argv[1]);
+	system(cmd);
+        
+	return 0;
+ }
+\end{minted}
+
+It is just a simple wrapper around echo command, which prints whatever text
+passed as an argument. Output of \texttt{Hello!} would be \texttt{Hello!}.
+But passing \texttt{Hello!; rm -rf --no-preserve-root /} will not only print
+\texttt{Hello!}, but also wipe the system partition completely, if run with 
+superuser privileges.
+
+\subsubsection{How to prevent it}
+
+To avoid injection attacks or at least minimize their consequences, it is
+important to validate any input that is provided by the user or could be sent to
+the application in other ways. There are many approaches to this.
+
+One way is to blacklist possibly malicious keywords, such us \texttt{OR '1'='1}
+or \texttt{rm -rf --no-preserve-root /}, but this approach is far from ideal.
+First problem is that it is impossible to block every troublesome combination,
+there are just too many of them. Changing \texttt{OR '1'='1} to \texttt{OR
+'x'='x} or putting comments inside the query could easily bypass this filter.
+
+Whitelisting is probably a better technique. Instead of blocking some keywords,
+it is allowing only specific characters or combinations. For example it could
+accept only letters from a to z and digits from 0 to 9. In case there are some
+other characters, the message will be blocked. It is a very good aproach, but it
+has some drawbacks. If a form requires a user to put his last name, but it
+contains apostrophe (e.g. O'Malley) or special letter with accent (e.g.
+Polański), he will not be able to put it there.
+
+Sanitization is another, highly effective approach. It works by removing
+malicious parts from the input or replacing them with safe alternatives. Let's
+say an attacker injects a dangerous script, like
+\texttt{"><script>alert("foo")</script>}. The sanitization algorithm could make
+it safe by stripping \texttt{<script>} tags and removing quotation marks.
+
+Finally, the best method to ensure the processed data is safe could be using
+API intended for that, which does not use interpreter or utilizes a
+parameterized interface. An example of that would sending prepared statements
+with parameterized queries to prevent SQL injections just like in the C\# code
+below:
+
+\begin{minted}{csharp}
+string username = "johnsmith";
+string query = "SELECT * FROM Users WHERE Username=@param_username";
+SqlCommand cmd = new SqlCommand(query);
+cmd.Parameters.AddWithValue("@param_username, username);
+\end{minted}
+
+This way, if an attacker will send \texttt{login' OR '1'='1} to the application,
+it will not cause any harm, because the query would literally try to find a user
+with name \texttt{login' OR '1'='1}.
+
+\newpage
 
 \section{Conclusion}
 
 \section{Reflection}
 
+\newpage
+
 \begin{thebibliography}{9}
+
+	\addcontentsline{toc}{section}{References}
 
 	\bibitem{webapphandbook}
 		Dafydd Stuttard, Marcus Pinto.
@@ -306,6 +464,7 @@ critical web application security risks:
 		\textit{Mobile Application Security: 15 Best Practices for App
 		Developers}
 		\texttt{https://checkmarx.com/2015/08/19/mobile-application}
+
 \end{thebibliography}
 
 \end{document}
