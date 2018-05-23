@@ -200,7 +200,7 @@ good security could help in gaining new clients.
 In the wake of mobile and Internet of Things applications, security should be
 top priority for application developers. IoT creates many new risks that were
 never seen before. Since all of the devices are connected to the internet, they
-can be accessed by the hackers. It is a big threat to the privacy of their
+can be accessed by the attackers. It is a big threat to the privacy of their
 users, because they can be used to spy on them 24/7 by utilizing built-in
 camera, microphone or reading device activity and logs. This information could
 be used to blackmail the victims or even help in burglary. By knowing the
@@ -465,6 +465,29 @@ executed. Another way would be to completely prohibit usage of
 \texttt{<script>}, \texttt{<link>} or \texttt{<iframe>} tags in HTML-enabled
 forms.
 
+\subsection{Security by design}
+
+It is a good practice to create applications with security in mind from the very
+beginning of the development. It helps to avoid having vulnerabilities in the
+future. This idea known as security by design is based on several security
+principles:
+
+\begin{itemize}
+	\item{Minimize attack surface area}
+	\item{Establish secure defaults}
+	\item{Principle of Least privilege}
+	\item{Principle of Defense in depth}
+	\item{Fail securely}
+	\item{Don't trust services}
+	\item{Separation of duties}
+	\item{Avoid security by obscurity}
+	\item{Keep security simple}
+	\item{Fix security issues correctly}
+\end{itemize}
+
+Microsoft created software development process which follows these principles,
+Security Development Lifecycle (SDL).
+
 \newpage
 
 \section{Conclusion}
@@ -507,6 +530,17 @@ forms.
 		\textit{Mobile Application Security: 15 Best Practices for App
 		Developers}
 		\texttt{https://checkmarx.com/2015/08/19/mobile-application}
+
+	\bibitem{sbd}
+		OWASP.
+		\textit{Security by Design Principles}.
+		\texttt{https://www.owasp.org/index.php/\allowbreak{}
+		Security\_by\_Design\_Principles}
+
+	\bibitem{sdl}
+		Microsoft.
+		\textit{Security Development Lifecycle}.
+		\texttt{https://www.microsoft.com/sdl}
 
 \end{thebibliography}
 
