@@ -472,16 +472,32 @@ future. This idea known as security by design is based on several security
 principles:
 
 \begin{itemize}
-	\item{Minimize attack surface area}
-	\item{Establish secure defaults}
-	\item{Principle of Least privilege}
-	\item{Principle of Defense in depth}
-	\item{Fail securely}
-	\item{Don't trust services}
-	\item{Separation of duties}
-	\item{Avoid security by obscurity}
-	\item{Keep security simple}
-	\item{Fix security issues correctly}
+	\item \textbf{Minimize attack surface area}
+		The more features an application has, the higher the risk of it
+		being vulnerable to exploits, because the attack surface area is
+		bigger. It is encouraged to add only necessary functions and
+		make them simple.
+	\item \textbf{Establish secure defaults}
+		It means making security measures on by default, but allowing to
+		disable them, if a user wishes to.
+	\item \textbf{Principle of Least privilege}
+		Every entity in the application should have just as many
+		privileges and resources as they need to perform their actions,
+		and no more than that.
+	\item \textbf{Principle of Defense in depth}
+		The defense should be created by layered security mechanisms, so
+		if one of them becomes broken, the other ones may still prevent
+		the attack.
+	\item \textbf{Fail securely}
+		If a security mechanism fails and throws exceptions, it should
+		still serve its purpose and block the request that caused the
+		error.
+	\item \textbf{Don't trust services}
+		When an application is using third party services
+	\item \textbf{Separation of duties}
+	\item \textbf{Avoid security by obscurity}
+	\item \textbf{Keep security simple}
+	\item \textbf{Fix security issues correctly}
 \end{itemize}
 
 Microsoft created software development process which follows these principles,
