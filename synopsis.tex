@@ -75,12 +75,12 @@ The method which I am going to use in my research consists of a few activities:
 	\item Finding detailed descriptions and tutorials about specific attack
 		techniques
 	\item Trying to reproduce the attacks by creating vulnerable
-		applications and exploiting them
+		applications, exploiting them and trying to make them secure
 \end{itemize}
 
 \section{Plan}
 
-To optimize my work and to make sure I will deliver the finishied synopsis
+To optimize my work and to make sure I will deliver the finished synopsis
 before the deadline, I have prepared a plan which I will try to follow:
 
 \begin{table}[h]
@@ -122,7 +122,7 @@ correct any mistakes that I find.
 
 Application security describes activities that need to be taken into
 consideration by a developer who creates an application which will be available
-to a broader group of users. Having a large userbase means that there is a risk
+to a broader group of users. Having a large user base means that there is a risk
 that, among the regular users, there might be some individuals with malicious
 intents.
 
@@ -134,7 +134,7 @@ a bank account. Administrator actions, like adding/removing users or changing
 application's settings could be an example of functionality wanted by the
 attackers.
 
-In order to achieve their goals, the attackers try to find vulnerablities,
+In order to achieve their goals, the attackers try to find vulnerabilities,
 unintended flaws or weaknesses in the application, and exploit them. Although
 the application security improved over the years, some of the most common
 vulnerabilities remain unchanged and include: broken authentication, broken
@@ -265,9 +265,8 @@ critical web application security risks:
 		execution, replay attacks, injection attacks and privilege
 		escalation attacks.
 	\item \textbf{A9:2017 - Using Components with Known Vulnerabilities} \\
-		A weakness in one component could lead to compromisitation of
-		the whole system. Application is just as secure its weakest
-		link.
+		A weakness in one component could lead to a compromise of the
+		whole system. Application is just as secure as its weakest link.
 	\item \textbf{A10:2017 - Insufficient Logging \& Monitoring} \\
 		Application needs to log what is happening inside it and its
 		status needs to be monitored so, in case of a breach,
@@ -348,10 +347,10 @@ is an example of remote file injection made in PHP:
 ?>
 \end{minted}
 
-The intended behaviour is to load a PHP file, which is on the sever, when
-loading a URL like: \texttt{https://example.com/cars.php?car=lamborghini}. This
-should load lamborghini.php file. However, it could be exploited to load a
-remote file with malicious code just by changing the end of the URL, from
+The intended behavior is to load a PHP file, which is on the sever, when loading
+a URL like: \texttt{https://example.com/cars.php?car=lamborghini}. This should
+load lamborghini.php file. However, it could be exploited to load a remote file
+with malicious code just by changing the end of the URL, from
 \texttt{lamborghini} to \texttt{https://attackerswebsite.com/badcode}.
 
 Another injection attack is command injection. In this attack, the attacker can
@@ -394,8 +393,8 @@ there are just too many of them. Changing \texttt{OR '1'='1} to \texttt{OR
 Whitelisting is probably a better technique. Instead of blocking some keywords,
 it is allowing only specific characters or combinations. For example it could
 accept only letters from a to z and digits from 0 to 9. In case there are some
-other characters, the message will be blocked. It is a very good aproach, but it
-has some drawbacks. If a form requires a user to put his last name, but it
+other characters, the message will be blocked. It is a very good approach, but
+it has some drawbacks. If a form requires a user to put his last name, but it
 contains apostrophe (e.g. O'Malley) or special letter with accent (e.g.
 Polański), he will not be able to put it there.
 
@@ -486,13 +485,45 @@ principles:
 \end{itemize}
 
 Microsoft created software development process which follows these principles,
-Security Development Lifecycle (SDL).
+Security Development Lifecycle (SDL). It consists of 16 practices, split into 6
+phases. These activities include: security training, setting requirements and
+minimal levels of security, risks assessment, designing secure functionality and
+security functions, safe implementation, analysis and testing of produced
+application, creating emergency plan and final review.
 
 \newpage
 
 \section{Conclusion}
 
+To conclude, to make a secure application it is important to understand the
+concept and importance of application security, to know the possible
+vulnerabilities and design the app in a way which would prevent them. There are
+many exploits, but most of them are well-known, since they are present for many
+years. To each one of them, there are possible countermeasures. Some of them are
+better than the others depending on the situation, requirements, environment.
+They have their benefits, but they could also have drawbacks sometimes. It is up
+to the developer to choose the right one, implement it properly and thoroughly
+test. However, he is not alone in this process. There are many resources and
+guides available with good practices, security principles, attack techniques and
+prevention methods made by people dedicated to making software more secure.
+
 \section{Reflection}
+
+Thanks to this project I have learned a lot about application security and how
+to make my apps secure. I got really interested in this subject and I would like
+to continue studying it. That is why I believe it was a good decision to pick up
+this topic. The questions I asked in my problem definition were on point as, by
+trying to answer them, I managed to describe the things I wanted to learn and
+write about. I think my methods of research were correct, since availability of
+resources made it easy to find information in many different, interesting forms.
+Creation of examples allowed me to not only understand the security concepts in
+theory, but also in practice. The plan I came up with was good, because it
+allowed me to focus on my goals instead of single activities in specific days,
+which would be hard to follow, because of my dynamic schedule. Although, looking
+back at it, I could make it better by assigning less time on initial and final
+activities, and putting more time on the actual work. This made me not follow my
+plan completely the way I would like to. However, in the end I managed to finish
+my synopsis on time, so it is not a big issue.
 
 \newpage
 
