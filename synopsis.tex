@@ -493,11 +493,26 @@ principles:
 		still serve its purpose and block the request that caused the
 		error.
 	\item \textbf{Don't trust services}
-		When an application is using third party services
+		When an application is using third party services, it should be
+		careful just like with any other external system. These services
+		could have different, perhaps worse security and might get
+		compromised. Trusting them too much creates a risk for the app.
 	\item \textbf{Separation of duties}
+		Every user of the application has his role (e.g. administrator,
+		client) and capabilities. An account with one role should not
+		have functionality of another role.
 	\item \textbf{Avoid security by obscurity}
+		Application's security should not rely on keeping secrets, like
+		being closed source or using custom cypher algorithm. It should
+		be also using other security mechanisms.
 	\item \textbf{Keep security simple}
+		Simple code is more secure and faster than a complex one, as it
+		minimizes the attack surface area.
 	\item \textbf{Fix security issues correctly}
+		When a security bug is found, it is important to understand how
+		it is working, analyze it and test. All other components
+		affected by this issue should be also checked to make sure they
+		are safe.
 \end{itemize}
 
 Microsoft created software development process which follows these principles,
