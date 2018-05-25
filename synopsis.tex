@@ -422,7 +422,7 @@ SqlCommand cmd = new SqlCommand(query);
 cmd.Parameters.AddWithValue("@param_username, username);
 \end{minted}
 
-This way, if an attacker will send \texttt{login' OR '1'='1} to the application,
+This way, if an attacker sends \texttt{login' OR '1'='1} to the application,
 it will not cause any harm, because the query would simply try to find a user
 with name \texttt{login' OR '1'='1}.
 
@@ -430,7 +430,7 @@ with name \texttt{login' OR '1'='1}.
 
 \subsubsection{How it works}
 
-Cross-Site Scripting is closely related to injection as it works by injecting a
+Cross-Site Scripting is closely related to injection as it works by inserting a
 malicious code to the application. There are two categories of this attack:
 stored and reflected. 
 
@@ -553,7 +553,7 @@ pick up this topic. The questions I asked in my problem definition were on
 point as, by trying to answer them, I managed to describe the things I wanted
 to learn and write about. I think my methods of research were correct since the
 availability of resources made it easy to find information in many different,
-interesting forms.  Creation of examples allowed me to not only understand the
+interesting forms. Creation of examples allowed me to not only understand the
 security concepts in theory but also in practice. The plan I came up with was
 good because it allowed me to focus on my goals instead of single activities on
 specific days, which would be hard to follow, because of my dynamic schedule.
