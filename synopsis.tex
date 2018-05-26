@@ -352,10 +352,10 @@ is an example of remote file injection made in PHP:
 \end{minted}
 
 The intended behavior is to load a PHP file, which is on the server, when
-loading an URL like: \texttt{https://example.com/cars.php?car=lamborghini}.
+loading an URL like: \texttt{http://www.website.com/cars.php?car=lamborghini}.
 This should load the lamborghini.php file. However, it could be exploited to
 load a remote file with malicious code just by changing the end of the URL,
-from \texttt{lamborghini} to \texttt{https://attackerswebsite.com/badcode}.
+from \texttt{lamborghini} to \texttt{http://www.attackerswebsite.com/badcode}.
 
 Another injection attack is command injection. In this attack, the attacker can
 execute shell commands by passing them to an application, which does not do
@@ -574,40 +574,43 @@ end, I managed to finish my synopsis on time, so it is not a big issue.
 		John Wiley \& Sons Inc, ISBN: 978-1118026472, 2011.
 
 	\bibitem{owasptop10}
-		The OWASP Foundation
+		The OWASP Foundation.
 		\textit{OWASP Top 10 - 2017 (The Ten Most Critical Web
-		Application Security Risk)}
+		Application Security Risk)}.
 		\texttt{https://www.owasp.org/images/7/72/
-		OWASP\_Top\_10-2017\_(en).pdf.pdf}
+		OWASP\_Top\_10-2017\_(en).pdf.pdf}, The OWASP Foundation, 2017.
 
 	\bibitem{lyndaowasptop10}
 		Caroline Wong.
 		\textit{Learning the OWASP Top 10}.
 		\texttt{https://lynda.com/IT-\allowbreak{}
-		Infrastructure-tutorials/Learning-OWASP-Top-10/642483-2.html}
+		Infrastructure-tutorials/Learning-OWASP-Top-10/642483-2.html},
+		Lynda.com, 2018
 		
 	\bibitem{cernertalk}
 		Michael Coates.
 		\textit{Application Security - Understanding, Exploiting and
 		Defending against Top Web Vulnerabilities}.
-		\texttt{https://youtu.be/sY7pUJU8a7U}
+		\texttt{https://youtu.be/sY7pUJU8a7U}, CernerEng, 2014.
 
 	\bibitem{mobappsec}
 		Sarah Vonnegut.
 		\textit{Mobile Application Security: 15 Best Practices for App
-		Developers}
-		\texttt{https://checkmarx.com/2015/08/19/mobile-application}
+		Developers}.
+		\texttt{https://www.checkmarx.com/2015/08/19/mobile},
+		Checkmarx, 2015.
 
 	\bibitem{sbd}
-		OWASP.
-		\textit{Security by Design Principles}.
-		\texttt{https://owasp.org/index.php/\allowbreak{}
-		Security\_by\_Design\_Principles}
+		The OWASP Foundation.
+		\textit{Security by Design Principles}. 
+		\texttt{https://owasp.\allowbreak{}
+		org/index.php?title=Security\_by\_Design\_Principles\&oldid=220008}.
+		The OWASP Foundation, 2016.
 
 	\bibitem{sdl}
-		Microsoft.
-		\textit{Security Development Lifecycle}.
-		\texttt{https://microsoft.com/sdl}
+		Microsoft Corporation.
+		\textit{Simplified Implementation of the Microsoft SDL}.
+		\texttt{https://microsoft.com/sdl}, Microsoft Corporation, 2010.
 
 \end{thebibliography}
 
