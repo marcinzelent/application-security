@@ -607,4 +607,80 @@ continue studying it in the future.
 \printbibliography
 \addcontentsline{toc}{section}{References}
 
+\newpage
+
+\appendix
+\section{SQL injection example}
+
+\subsection{HTML code}
+\begin{minted}{html}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Login page</title>
+		<meta charset="utf-8" />
+<style>
+body {
+	text-align: center;
+}
+
+input {
+	margin-bottom: 5px;
+}
+
+</style>
+	</head>
+	<body>
+		<h1>Login</h1>
+		<form action="login.php" method="post">
+			<input type="text" name="email" placeholder="E-mail"><br>
+			<input type="password" name="pass" placeholder="Password"><br>
+			<input type="submit" value="Log in">
+		</form>
+	</body>
+</html>
+\end{minted}
+\newpage
+
+\subsection{PHP code}
+\begin{minted}{php}
+<?php
+   class MyDB extends SQLite3 {
+      function __construct() {
+         $this->open('users.db');
+      }
+   }
+
+   if(isset($_POST['email'], $_POST['pass']))
+   {
+	$email = $_POST['email'];
+	$pass = $_POST['pass'];
+
+	$db = new MyDB();
+
+	$sql = 'SELECT * FROM Users WHERE email=\''.$email.
+    '\' AND password=\''.$pass.'\'';
+
+	$ret = $db->query($sql);
+	while($row = $ret->fetchArray(SQLITE3_ASSOC)) {
+		echo 'Logged in as '.$row['email'].'<br>';
+	}
+	$db->close();
+   }
+?>
+\end{minted}
+\newpage
+
+\subsection{SQL code}
+\begin{minted}{sql}
+CREATE TABLE Users (
+	email varchar(32),
+	password varchar(32)
+);
+
+INSERT INTO Users VALUES('test@mail.com','password');
+INSERT INTO Users VALUES('marcin@mail.com','pass');
+\end{minted}
+\newpage
+
 \end{document}
