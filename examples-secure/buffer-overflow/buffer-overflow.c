@@ -7,7 +7,8 @@ int main(void)
 	int ok = 0;
 
 	printf("Type admin password: ");
-	gets(buf);
+	fgets(buf, sizeof buf, stdin);
+	buf[strlen(buf)-1] = '\0';
 
 	if (strcmp(buf, "pass123")) printf("\nWrong password!\n");
 	else ok = 1;
