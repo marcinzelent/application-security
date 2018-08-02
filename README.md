@@ -17,8 +17,11 @@ could use it to gain access to the system without authorization, retrieve some
 sensitive data, abuse or even break the system. This could lead to some serious
 consequences.
 
-This repository contains all resources that I have created during my research:
+## Contents
+
 - LaTeX files for the synopsis
 - examples of a few chosen security vulnerabilities
 - examples with these weaknesses fixed
 - presentation slides to be displayed with [sent](https://tools.suckless.org/sent/)
+
+#### This project entered the [Hall of Fame](http://mofa-easj.dk/hall_of_fame.html) on [my teacher](https://github.com/mhfayez)'s website.
